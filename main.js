@@ -1,29 +1,25 @@
 $(function(argument) {
   var commune = "nantes"
-  var nbCommune=-1;
+  var nbphoto=-1;
 
   $("#choix").autocomplete({
-    minLength: 3,
+    minLength: 0,
     source: function(commune, response){
-      console.log(commune.term);
-      response(getCommune(commune.term, nbCommune));
+      getCommune(commune.term, response);
     },
-    // select: function( event, ui ) {
-    //     console.log(event);
-    //     console.log(ui);
-    //     console.log(ui.item.value);
-    //   $("div").html(ui.item.value);
-    // }
+    _resizeMenu: function() {
+      this.menu.element.outerWidth( 5 );
+    }
   });
 
 });
 
 
-function getCommune(commune, nbCommune){
+function getCommune(commune, response){
   var outData='commune='+commune;
-  if(nbCommune != -1){
-    outData=outData+'&maxRows='+nbCommune;
-  }
+  // if(nbCommune != -1){
+  //   outData=outData+'&maxRows='+nbCommune;
+  // }
   $.ajax({
       url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',
       type : 'get',
@@ -34,8 +30,7 @@ function getCommune(commune, nbCommune){
         $.each(out, function (i, val) {
           tab[tab.length]=val.Ville;
         });
-        console.log(tab);
-        return tab;
+        response( tab);
       }
   });
 };
