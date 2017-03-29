@@ -5,6 +5,7 @@
     <title>Projet</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </head>
@@ -16,5 +17,23 @@
       <input id="choix" type="text" name="name" value="">
     </form>
     <div></div>
+
+    <div id="tabs">
+      <ul>
+        <li><a href="#fragment-1"><span>Vue Photo</span></a></li>
+        <li><a href="#fragment-2"><span>Vue Tableau</span></a></li>
+      </ul>
+      <div id="fragment-1">
+        ici photos
+      </div>
+      <div id="fragment-2">
+        ici tableau
+      </div>
+    </div>
+
+    <script>
+    $( "#tabs" ).tabs();
+    </script>
+
   </body>
 </html>
