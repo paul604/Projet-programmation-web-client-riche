@@ -8,11 +8,15 @@ $(function(argument) {
     var nbphoto=-1;
 
     //auto comp for ville
-    $("#choix").autocomplete({
+    $(".choix").autocomplete({
         minLength: 0,
         source: function(commune, response){
             getCommune(commune.term, response);
         }
+    });
+
+    $(".bouton").click(function(){
+        getImg($(".choix_text")[0].value, $(".choix_nombre")[0].value);
     });
 
 });
