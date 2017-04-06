@@ -111,6 +111,11 @@ body{
   margin-top: 40px;
 }
 
+.header_onglet{
+  background-color: #979ea2;
+  background: default;
+}
+
 /*
 * http://jqueryui.com/
 * pour liste deroulante
