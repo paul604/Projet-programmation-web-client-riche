@@ -15,8 +15,6 @@ $(function(argument) {
         }
     });
 
-    //change style tabs
-    changeStyleTabs();
 });
 
 
@@ -94,8 +92,4 @@ function getImg(ville, nbImg){//https://www.flickr.com/services/api/flickr.place
             });
         }
         });
-}
-
-function changeStyleTabs(){
-
 }
