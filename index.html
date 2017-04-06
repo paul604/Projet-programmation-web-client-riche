@@ -4,36 +4,37 @@
     <meta charset="utf-8">
     <title>Projet</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+
   </head>
   <body>
-      <label for="choix">Votre choix: </label>
-      <input type="number" min="0" name="name" value="10">
 
     <form>
-      <input id="choix" type="text" name="name" value="">
+
+        <label for="choix">Votre choix: </label>
+        <input id="choix" type="text" name="name" value="">
+        <input type="number" min="0" name="name" value="10">
+        <span class="ui-icon ui-icon-search"></span>
     </form>
-    <div></div>
 
     <div id="tabs">
       <ul>
-        <li><a href="#fragment-1"><span>Vue Photo</span></a></li>
-        <li><a href="#fragment-2"><span>Vue Tableau</span></a></li>
+        <li><a href="#photos"><span>Vue Photo</span></a></li>
+        <li><a href="#tableau"><span>Vue Tableau</span></a></li>
       </ul>
-      <div id="fragment-1">
+      <div id="photos">
         ici photos
       </div>
-      <div id="fragment-2">
+      <div id="tableau">
         ici tableau
       </div>
     </div>
-
-    <script>
-    $( "#tabs" ).tabs();
-    </script>
 
   </body>
 </html>

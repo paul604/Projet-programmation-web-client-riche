@@ -1,36 +1,35 @@
 $(function(argument) {
-  var commune = "nantes"
-  var nbphoto=-1;
 
-  $("#choix").autocomplete({
-    minLength: 0,
-    source: function(commune, response){
-      getCommune(commune.term, response);
-    },
-    _resizeMenu: function() {
-      this.menu.element.outerWidth( 5 );
-    }
-  });
+    //pour tab
+    $( "#tabs" ).tabs();
+
+    var commune = "nantes"
+    var nbphoto=-1;
+
+    //auto comp for ville
+    $("#choix").autocomplete({
+        minLength: 0,
+        source: function(commune, response){
+            getCommune(commune.term, response);
+        }
+    });
 
 });
 
 
 function getCommune(commune, response){
-  var outData='commune='+commune;
-  // if(nbCommune != -1){
-  //   outData=outData+'&maxRows='+nbCommune;
-  // }
-  $.ajax({
-      url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',
-      type : 'get',
-      dataType : 'json',
-      data : outData,
-      success : function(out, statut){
-        var tab = [];
-        $.each(out, function (i, val) {
-          tab[tab.length]=val.Ville;
+    var outData='commune='+commune;
+    $.ajax({
+        url : 'http://infoweb-ens/~jacquin-c/codePostal/commune.php',
+        type : 'get',
+        dataType : 'json',
+        data : outData,
+        success : function(out, statut){
+            var tab = [];
+            $.each(out, function (i, val) {
+                tab[tab.length]=val.Ville;
+            });
+            response( tab);
+        }
         });
-        response( tab);
-      }
-  });
 };
