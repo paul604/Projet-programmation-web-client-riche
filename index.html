@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Projet</title>
+
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
 
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css"/>
 
 
   </head>
@@ -32,7 +35,27 @@
         ici photos
       </div>
       <div id="tableau">
-        ici tableau
+          <table>
+              <thead>
+                  <tr>
+                      <th>Image</th>
+                      <th>Nom</th>
+                      <th>heure</th>
+                      <th>photographe</th>
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                      <th>Image</th>
+                      <th>Nom</th>
+                      <th>heure</th>
+                      <th>photographe</th>
+                  </tr>
+              </tfoot>
+              <tbody>
+
+              </tbody>
+          </table>
       </div>
     </div>
 
