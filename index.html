@@ -15,13 +15,31 @@
   </head>
   <body>
 
-    <form>
-        <div class="ui-icon ui-icon-search"></div>
-        <input class="choix choix_text" type="text" name="name" value="" placeholder="Chercher votre ville ici">
-        <input type="button" class="bouton" name="rechercher" value="Rechercher"><br>
-        <div class="choix choix_titre">Nombre d'images en résultat</div>
-        <input class="choix choix_nombre" type="number" min="0" max="20" name="name" value="10">
-    </form>
+    <div class="form_recherche header">
+
+      <h1 class="titre">Images des villes</h1>
+
+      <form class="form_recherche">
+
+        <div class="form_choix">
+
+          <div class="ui-icon ui-icon-search"></div>
+          <input class="choix choix_text" type="text" name="name" value="" placeholder="Chercher votre ville ici">
+          <input type="button" class="bouton" name="rechercher" value="Rechercher">
+
+        </div>
+
+        <div class="form_choix">
+
+          <div class="choix choix_titre">Nombre d'images en résultat</div>
+          <input class="choix choix_nombre" type="number" min="0" max="20" name="name" value="10">
+
+        </div>
+
+      </form>
+
+    </div>
+
 
     <div id="tabs">
       <ul>

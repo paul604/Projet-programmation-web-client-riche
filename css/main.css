@@ -3,10 +3,18 @@
 }*/
 body{
   font-family: Proxima Nova,helvetica neue,helvetica,arial,sans-serif;
+  background: #f3f5f6;
+}
+
+.titre{
+  margin:0px;
+  margin-left: 1vw;
+  color: #fff;
 }
 
 .bouton {
   margin-left: -5px;
+  margin-right: 15px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   height: 40px;
@@ -64,6 +72,8 @@ body{
   padding: 5px 16px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  color: #fff;
+  background-color: #979ea2;
 }
 
 .ui-icon, .ui-icon-search{
@@ -77,6 +87,23 @@ body{
   left: 32px;
   margin-left: -24px;
   padding: 0;
+}
+
+.form_recherche{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  padding: 10px;
+  background-color: #212124;
+}
+
+.header{
+  justify-content: space-around;
+  flex-flow: row nowrap;
+  margin-left: -1vw;
+  margin-top: -1vh;
+  width: 100vw;
 }
 
 /*
