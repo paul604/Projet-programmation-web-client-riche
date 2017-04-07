@@ -1,8 +1,14 @@
 $(function(argument) {//quand le doc est chargé
 
-    //pour tab
+    //pour tableau
     $("#tabs").tabs();
     $("table").DataTable();
+
+    //date picker
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+    });
 
     //auto comp for ville
     $(".choix").autocomplete({
@@ -19,12 +25,15 @@ $(function(argument) {//quand le doc est chargé
         if(choix==""){//si le choix est vide
             return;
         }
-        getImg(choix, $(".choix_nombre")[0].value);
+        // console.log($("#datepicker")[0].value);
+        getImg(choix, $(".choix_nombre")[0].value, $("#datepicker")[0].value);
     });
 
-
-
 });
+
+
+
+
 
 //fonction a par car apeller apprè upload des img
 function loadEventModal(){
@@ -43,8 +52,17 @@ function loadEventModal(){
     });
 }
 
+
+
+
+
 //api_key
 var cle = 'ab391901d536ce3673c4253bf6068435';
+
+
+
+
+
 
 
 //permet de get les villes matchant avec commune
@@ -66,12 +84,20 @@ function getCommune(commune, response){
 };
 
 
+
+
+
+
+
 //get l'id de la ville voulue puis des img
-function getImg(ville, nbImg){//https://www.flickr.com/services/api/flickr.places.find.htm
+function getImg(ville, nbImg, date){//https://www.flickr.com/services/api/flickr.places.find.htm
 
     var HtmlPhoto = $("#photos");
     var HtmlTab = $("table").DataTable();
     // var HtmlTab = $("#tableau");
+
+
+
 
     var outData='method=flickr.places.find&api_key='+cle+'&format=json&query='+ville;
     $.ajax({//get id ville
@@ -85,7 +111,20 @@ function getImg(ville, nbImg){//https://www.flickr.com/services/api/flickr.place
             if(out.places.place.length==0){
                 return;
             }
-            var dataIdImg = 'method=flickr.photos.search&api_key='+cle+'&format=json&per_page='+nbImg+'&place_id='+out.places.place[0].place_id;
+            if(date!=""){//si une date
+                //parse la date en forma unix pour l'api
+                date = $.datepicker.parseDate( "mm/dd/yy", date, {
+                    dateFormat: "@"//@ => unix
+                });
+
+                var dataIdImg = 'method=flickr.photos.search&api_key='+cle+'&format=json&per_page='+nbImg+'&min_taken_date='+date+'&place_id='+out.places.place[0].place_id;
+            }else{
+                var dataIdImg = 'method=flickr.photos.search&api_key='+cle+'&format=json&per_page='+nbImg+'&place_id='+out.places.place[0].place_id;
+            }
+
+
+
+
             $.ajax({ // get id photos de vill https://www.flickr.com/services/api/flickr.photos.search.html
                 url : 'https://api.flickr.com/services/rest/',
                 type : 'get',
@@ -106,6 +145,10 @@ function getImg(ville, nbImg){//https://www.flickr.com/services/api/flickr.place
                             return;
                         }
                         var idImg='method=flickr.photos.getInfo&api_key='+cle+'&format=json&photo_id='+val.id;
+
+
+
+
                         $.ajax({//get info img
                             url : 'https://api.flickr.com/services/rest/',
                             type : 'get',
@@ -115,9 +158,10 @@ function getImg(ville, nbImg){//https://www.flickr.com/services/api/flickr.place
                             success : function(outInfoImg, statutIImg){
                                 outInfoImg=outInfoImg.photo;
                                 // console.log(outInfoImg);
-
                                                     //https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{o-secret}_o.(jpg|gif|png)
                                 var img = "<img src=\"https://farm"+val.farm+".staticflickr.com/"+val.server+"/"+val.id+"_"+val.secret+"_q.jpg)\" alt=\""+val.title+"\"/>";
+
+
                                 //add list img
                                 HtmlPhoto.append("<span class=\"img\">"+img
                                     +"<div class=\"modal\">"
